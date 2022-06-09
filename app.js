@@ -5,9 +5,11 @@ const https = require("https");
 
 const app = express();
 
-const config = require("./config.js");
 
 app.use(express.static("static-files"));
+
+const config = require(__dirname+"/config.js");
+
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.get("/", function(req, res){
