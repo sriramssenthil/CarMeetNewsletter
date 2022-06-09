@@ -5,6 +5,8 @@ const https = require("https");
 
 const app = express();
 
+const config = require("./config.js");
+
 app.use(express.static("static-files"));
 app.use(bodyParser.urlencoded({extended:true}));
 
@@ -32,13 +34,16 @@ app.post("/", function(req, res){
 
     const jsonData = JSON.stringify(data);
 
-    const url = "https://us17.api.mailchimp.com/3.0/lists/f56a09b2e6"
+    var id = config.ID;
+    var key = config.SECRET_API_KEY;
+
+    const url = "https://us17.api.mailchimp.com/3.0/lists/"+id
     const options = {
         method: "POST",
-        auth: "njcm1:542f71f7fad87456df89f0198ecb79a5-us17"
+        auth: "njcm1:"+key
     }
     const request = https.request(url, options, function(response){
-        
+        console.log(response.statusCode);
         if (response.statusCode === 200){
             res.sendFile(__dirname + "/success.html");
         } else {
@@ -62,7 +67,5 @@ app.listen(process.env.PORT || 3000, function(){
     console.log("Running");
 });
 
-//f56a09b2e6
 
-//542f71f7fad87456df89f0198ecb79a5-us17
 
