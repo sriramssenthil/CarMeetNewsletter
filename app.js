@@ -36,10 +36,10 @@ app.post("/", function(req, res){
 
     const jsonData = JSON.stringify(data);
 
-    let config = new app.config({
+    let config = {
         ID: process.env.ID,
         KEY: process.env.SECRET_API_KEY
-    })
+    }
 
     var id = config.ID;
     var key = config.SECRET_API_KEY;
