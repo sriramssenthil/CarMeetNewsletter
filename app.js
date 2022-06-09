@@ -36,14 +36,14 @@ app.post("/", function(req, res){
 
     const jsonData = JSON.stringify(data);
 
-    var config = new app.config({
+    let config = new app.config({
         ID: process.env.ID,
         KEY: process.env.SECRET_API_KEY
     })
 
     var id = config.ID;
     var key = config.SECRET_API_KEY;
-    
+
     const url = "https://us17.api.mailchimp.com/3.0/lists/"+id
     const options = {
         method: "POST",
