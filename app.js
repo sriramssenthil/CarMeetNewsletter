@@ -8,7 +8,7 @@ const app = express();
 
 app.use(express.static("static-files"));
 
-const config = require(__dirname+"/config.js");
+const config = require("./config.js");
 
 app.use(bodyParser.urlencoded({extended:true}));
 
